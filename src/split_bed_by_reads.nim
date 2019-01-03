@@ -96,7 +96,8 @@ proc main() =
     threads = parseInt($args["--threads"])
   open(bam, $args["<BAM>"], threads=threads, index=true)
 
-  for chrom in sorted(toSeq(regions.keys()), system.cmp):
+  for target in targets(bam.hdr):
+      var chrom = target.name
       if not regions.contains(chrom) or regions[chrom].len == 0:
           continue
       for region in regions[chrom]:
