@@ -84,7 +84,6 @@ proc main() =
 
   var
       bam:Bam
-      tot_count = 0
       count = 0
       start = 0
       stop = 0
@@ -103,17 +102,16 @@ proc main() =
       for region in regions[chrom]:
           start = region.start
           for record in bam.query(region.chrom,region.start,region.stop):
-              inc(tot_count)
               inc(count)
               if count mod split == 0:
-                  echo region.chrom,":",start,"-",record.start," ",count
-                  out_bed.writeLine(region.chrom & "\t" & $start&"\t" & $record.start & "\t" & $count)
+                  if record.start > start: # if ending on high coverage position
+                    echo region.chrom,":",start,"-",record.start," ",count
+                    out_bed.writeLine(region.chrom & "\t" & $start & "\t" & $record.start & "\t" & $count)
                   start = record.start + 1
                   count = 0
           echo region.chrom,":",start,"-",region.stop," ",count
           out_bed.writeLine(region.chrom & "\t" & $start & "\t" & $region.stop & "\t" & $count)
           count = 0
-          start = 0
       echo "Chr ", chrom, ":", now() - time
   echo now() - time
   close(bam)
