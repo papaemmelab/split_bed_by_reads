@@ -16,7 +16,7 @@ Download the binaries:
 
 ```
 wget -O ${BIN_DIR}/split_bed_by_reads https://github.com/papaemmelab/split_bed_by_reads/releases/download/0.1.0/split_bed_by_reads && \
-    chmod +x ${BIN_DIR}/split_bed_by_reads
+chmod +x ${BIN_DIR}/split_bed_by_reads
 export PATH=${BIN_DIR}:$PATH
 ```
 
