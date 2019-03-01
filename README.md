@@ -2,7 +2,7 @@ Nim Program to split bed files based on a maximum read count in each interval fo
 
 # Installation:
 
-Install nim and run as a nim script
+Install nim and compile nim script
 
 ```
 curl https://nim-lang.org/choosenim/init.sh -sSf|sed "s/need_tty=yes/need_tty=no/g" | sh
