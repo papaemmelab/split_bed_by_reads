@@ -1,5 +1,7 @@
 Nim Program to split bed files based on a maximum read count in each interval for a given bam file.
 
+This program loops through all the reads in the regions. If exact counts are not needed take a look at [split_bed_by_index](https://github.com/papaemmelab/split_bed_by_index) which makes estimates using the bam index and is almost instantaneous.
+
 # Installation:
 
 Install nim and compile nim script
