@@ -83,10 +83,9 @@ proc main() =
   echo ""
 
   var
-      bam:Bam
+      bam: Bam
       count = 0
-      start = 0
-      stop = 0
+      start: int64 = 0
   let
     time = now()
     regions = bed_to_table($args["<BED>"])
